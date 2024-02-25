@@ -23,6 +23,7 @@ RUN apk --no-cache add ca-certificates python3 py3-pip ffmpeg tzdata \
 
 COPY --from=builder /usr/bin/yt-dlp /usr/bin/youtube-dl
 COPY --from=builder /build/bin/podsync /app/podsync
+RUN  /usr/bin/youtube-dl -U
 
 ENTRYPOINT ["/app/podsync"]
 CMD ["--no-banner"]
